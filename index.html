@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Atlantica Online DC V3 Private Server</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<!-- Tombol Music -->
+<button id="musicBtn">🎵 Music OFF</button>
+
+<!-- Volume -->
+<div class="volume-box">
+    <span>🔊 Volume</span>
+    <input type="range"
+           id="volumeControl"
+           min="0"
+           max="1"
+           step="0.01"
+           value="0.5">
+
+</div>
+<script>
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+    if(cursor){
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    }
+});
+
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+const volumeControl = document.getElementById("volumeControl");
+
+let playing = false;
+
+// Volume awal
+music.volume = 0.5;
+
+// Tombol Music
+btn.onclick = function () {
+    if (!playing) {
+        music.play();
+        btn.innerHTML = "🎵 Music ON";
+        playing = true;
+    } else {
+        music.pause();
+        btn.innerHTML = "🎵 Music OFF";
+        playing = false;
+    }
+};
+
+// Slider Volume
+volumeControl.addEventListener("input", function () {
+    music.volume = parseFloat(this.value);
+});
+</script>
+
+<div class="background"></div>
+
+<div class="overlay"></div>
+
+<div class="fire">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="cursor"></div>
+
+<div class="container">
+
+<h1>Atlantica Online DC</h1>
+
+<h2>V3 Private Server</h2>
+
+<div class="server-status">
+    <span class="wifi">📶</span>
+    <span>High Stability • Low Ping</span>
+</div>
+
+<div class="server-info">
+    <div>🎮 <b>Free To Play</b></div>
+    <div>💎 <b>No Need Top Up / Donation</b></div>
+</div>
+
+<div class="menu">
+
+<a href="https://drive.google.com/file/d/1ovlGlxDlFKREidbwmu6Fux94x-xI2Cen/view" target="_blank">
+    ⬇ Download
+</a>
+
+<a href="https://www.radmin-vpn.com/" target="_blank">
+🖥 Radmin VPN
+</a>
+
+<a href="https://discord.gg/GzzFx75MZ" target="_blank">
+    💬 Discord
+</a>
+
+</div>
+<div class="event-box">
+
+<div class="event-title">
+    <span>🔥 EVENT ALL DAY 🔥</span>
+</div>
+
+<p>🏆 Weakly Champion</p>
+<p>🎁 GM GIFT</p>
+<p>⚔️ GM INVASION TIME 20:00</p>
+<p>💎 DROP Rare Item</p>
+
+</div>
+</div>
+
+<div class="logo-box">
+
+    <div class="logo-circle">
+        <img src="logo.jpg" alt="AODC">
+    </div>
+
+    <div class="logo-text">
+        <h3>AODC</h3>
+        <span>Atlantica Online Disconnect Classic</span>
+    </div>
+
+</div>
+
+<div class="battle-video">
+
+    <video id="battleVideo" autoplay muted loop playsinline>
+        <source src="battle.mp4" type="video/mp4">
+    </video>
+
+    <button id="videoSoundBtn">
+        🔇 Battle Sound OFF
+    </button>
+
+</div>
+
+</body>
+</html>
+
+</div>
+</html>
