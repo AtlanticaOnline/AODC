@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Atlantica Online DC V3 Private Server</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Tombol Music -->
+<button id="musicBtn">🎵 Music OFF</button>
+
+<script>
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+    cursor.style.left=e.clientX+"px";
+    cursor.style.top=e.clientY+"px";
+});
+
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+
+let playing=false;
+
+btn.onclick=function(){
+
+    if(!playing){
+        music.play();
+        btn.innerHTML="🎵 Music ON";
+        playing=true;
+    }else{
+        music.pause();
+        btn.innerHTML="🎵 Music OFF";
+        playing=false;
+    }
+
+}
+</script>
+<body>
+
+<div class="background"></div>
+
+<div class="overlay"></div>
+
+<div class="fire">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="cursor"></div>
+
+<div class="container">
+
+<h1>Atlantica Online DC</h1>
+
+<h2>V3 Private Server</h2>
+
+<p>
+Classic Server • Stable • Low Ping
+</p>
+
+<div class="menu">
+
+<a href="https://drive.google.com/file/d/1ovlGlxDlFKREidbwmu6Fux94x-xI2Cen/view" target="_blank">
+    ⬇ Download
+</a>
+
+<a href="https://www.radmin-vpn.com/" target="_blank">
+🖥 Radmin VPN
+</a>
+
+<a href="https://discord.gg/GzzFx75MZ" target="_blank">
+    💬 Discord
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+
+});
+
+</script>
+
+</body><div class="logo-box">
+
+    <div class="logo-circle">
+        <img src="logo.jpg" alt="AODC">
+    </div>
+
+    <div class="logo-text">
+        <h3>AODC</h3>
+        <span>Atlantica Online Disconnect Classic</span>
+    </div>
+
+</div>
+</html>
