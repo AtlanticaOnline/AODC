@@ -1,14 +1,11 @@
 /*==========================================================
 AODC V5 ULTIMATE
 script.js
-PART 1
+Author: MrRex
 ==========================================================*/
 
 "use strict";
 
-/*==============================
-DOM ELEMENT
-==============================*/
 
 const enterBtn = document.getElementById("enterWorld");
 const loadingArea = document.querySelector(".loadingArea");
@@ -50,10 +47,6 @@ enterBtn.addEventListener("click", function () {
 
 });
 
-/*==============================
-START WEBSITE
-==============================*/
-
 document.addEventListener("DOMContentLoaded",()=>{
 
     initClock();
@@ -66,9 +59,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 
-/*==============================
-WELCOME SCREEN
-==============================*/
 
 if(enterWorld){
 
@@ -161,10 +151,6 @@ function openWebsite(){
 
 }
 
-/*==============================
-REAL TIME CLOCK
-==============================*/
-
 function initClock(){
 
 if(!clock) return;
@@ -189,9 +175,6 @@ clock.innerHTML=`${h}:${m}:${s}`;
 
 }
 
-/*==============================
-ONLINE PLAYER
-==============================*/
 
 function initPlayer(){
 
@@ -223,10 +206,6 @@ onlinePlayer.innerHTML=player;
 
 }
 
-/*==============================
-SERVER PING
-==============================*/
-
 function initPing(){
 
 if(!serverPing) return;
@@ -245,9 +224,6 @@ serverPing.innerHTML=ping+" ms";
 
 }
 
-/*==============================
-GM COUNTDOWN
-==============================*/
 
 function initCountdown(){
 
@@ -285,21 +261,9 @@ gmCountdown.innerHTML=`${h}h ${m}m ${s}s`;
 
 }
 
-/*==============================
-END PART 1
-==============================*/
-
-/*==========================================================
-AODC V5 ULTIMATE
-script.js
-PART 2
-==========================================================*/
 
 "use strict";
 
-/*==============================
-GM POPUP
-==============================*/
 
 const gmButton = document.getElementById("gmButton");
 const gmClose = document.getElementById("gmClose");
@@ -335,9 +299,6 @@ window.addEventListener("click",(e)=>{
 });
 
 
-/*==============================
-DOWNLOAD POPUP
-==============================*/
 
 const downloadButton=document.getElementById("downloadButton");
 const downloadClose=document.getElementById("downloadClose");
@@ -361,11 +322,6 @@ if(downloadClose){
     });
 
 }
-
-
-/*==============================
-HEADER EFFECT
-==============================*/
 
 const header=document.querySelector("header");
 
@@ -400,10 +356,6 @@ window.addEventListener("scroll",()=>{
 });
 
 
-/*==============================
-SCROLL REVEAL
-==============================*/
-
 const revealItems=document.querySelectorAll(
 
 ".serverCard,.downloadCard,.eventCard,.rankingCard,.newsCard,.communityCard"
@@ -431,9 +383,6 @@ window.addEventListener("scroll",revealAnimation);
 revealAnimation();
 
 
-/*==============================
-DOWNLOAD CARD
-==============================*/
 
 document.querySelectorAll(".downloadCard").forEach(card=>{
 
@@ -452,10 +401,6 @@ document.querySelectorAll(".downloadCard").forEach(card=>{
 });
 
 
-/*==============================
-EVENT CARD
-==============================*/
-
 document.querySelectorAll(".eventCard").forEach(card=>{
 
     card.addEventListener("mouseenter",()=>{
@@ -473,10 +418,6 @@ document.querySelectorAll(".eventCard").forEach(card=>{
 });
 
 
-/*==============================
-NEWS CARD
-==============================*/
-
 document.querySelectorAll(".newsCard").forEach(card=>{
 
     card.addEventListener("mouseenter",()=>{
@@ -493,10 +434,6 @@ document.querySelectorAll(".newsCard").forEach(card=>{
 
 });
 
-
-/*==============================
-BACK TO TOP
-==============================*/
 
 const topButton=document.createElement("button");
 
@@ -533,10 +470,6 @@ topButton.addEventListener("click",()=>{
 });
 
 
-/*==============================
-MUSIC CONTROL
-==============================*/
-
 const musicButton=document.createElement("button");
 
 musicButton.className="musicButton";
@@ -570,10 +503,6 @@ musicButton.addEventListener("click",()=>{
 });
 
 
-/*==============================
-VIDEO CONTROL
-==============================*/
-
 const videoButton=document.createElement("button");
 
 videoButton.className="videoButton";
@@ -595,11 +524,6 @@ videoButton.addEventListener("click",()=>{
     videoButton.innerHTML=videoMute ? "🎥" : "🔊";
 
 });
-
-
-/*==============================
-SERVER NOTIFICATION
-==============================*/
 
 function toast(message){
 
@@ -650,21 +574,11 @@ setTimeout(()=>{
 },10000);
 
 
-/*==============================
-END PART 2
-==============================*/
 
-/*==========================================================
-AODC V5 ULTIMATE
-script.js
-PART 3 FINAL
-==========================================================*/
 
 "use strict";
 
-/*==============================
-CURSOR GLOW
-==============================*/
+
 
 const cursor=document.createElement("div");
 
@@ -681,9 +595,7 @@ cursor.style.top=e.clientY+"px";
 });
 
 
-/*==============================
-FIRE PARTICLE
-==============================*/
+
 
 function createParticle(){
 
@@ -708,9 +620,7 @@ p.remove();
 setInterval(createParticle,250);
 
 
-/*==============================
-ENTER EFFECT
-==============================*/
+
 
 function enterExplosion(){
 
@@ -747,9 +657,7 @@ enterWorld.addEventListener("click",enterExplosion);
 }
 
 
-/*==============================
-ANNOUNCEMENT
-==============================*/
+
 
 const announce=document.getElementById("announcement");
 
@@ -792,9 +700,7 @@ announce.innerHTML=news[index];
 }
 
 
-/*==============================
-LEGENDARY ITEM
-==============================*/
+
 
 document.querySelectorAll(".dropItem").forEach(item=>{
 
@@ -817,9 +723,7 @@ item.style.boxShadow="";
 });
 
 
-/*==============================
-IMAGE PROTECTION
-==============================*/
+
 
 document.querySelectorAll("img").forEach(img=>{
 
@@ -828,9 +732,7 @@ img.draggable=false;
 });
 
 
-/*==============================
-KEYBOARD
-==============================*/
+
 
 document.addEventListener("keydown",(e)=>{
 
@@ -853,9 +755,7 @@ downloadModal.classList.remove("active");
 });
 
 
-/*====================================
-RIGHT CLICK WARNING SYSTEM
-====================================*/
+
 
 document.addEventListener("contextmenu", function(e){
 
@@ -903,9 +803,7 @@ function closeWarning(){
 
 }
 
-/*==============================
-COPY
-==============================*/
+
 
 document.addEventListener("copy",(e)=>{
 
@@ -914,9 +812,7 @@ e.preventDefault();
 });
 
 
-/*==============================
-PRELOAD IMAGE
-==============================*/
+
 
 const preload=[
 
@@ -941,9 +837,7 @@ img.src=src;
 });
 
 
-/*==============================
-PRELOAD VIDEO
-==============================*/
+
 
 if(bgVideo){
 
@@ -952,9 +846,7 @@ bgVideo.load();
 }
 
 
-/*==============================
-WINDOW LOAD
-==============================*/
+
 
 window.addEventListener("load",()=>{
 
@@ -969,9 +861,7 @@ toast("🚀 Website Ready");
 });
 
 
-/*==============================
-SAFE CHECK
-==============================*/
+
 
 window.addEventListener("error",(e)=>{
 
@@ -980,18 +870,14 @@ console.warn("AODC Error :",e.message);
 });
 
 
-/*==============================
-VERSION
-==============================*/
+
 
 const VERSION="AODC V5 ULTIMATE FINAL";
 
 console.log(VERSION);
 
 
-/*==============================
-THE END
-==============================*/
+
 
 function openGMModal() {
 
@@ -1012,9 +898,8 @@ function closeGMModal() {
     }
 
 }
-/*====================================
-RIGHT CLICK WARNING
-====================================*/
+
+
 
 const warningPopup = document.getElementById("rightClickWarning");
 const warningSound = document.getElementById("warningSound");
@@ -1041,9 +926,8 @@ function closeWarning(){
     warningSound.currentTime = 0;
 
 }
-/*====================================
-CLOSE RIGHT CLICK WARNING
-====================================*/
+
+
 
 const closeWarningBtn = document.getElementById("closeWarningBtn");
 
@@ -1066,9 +950,8 @@ if(closeWarningBtn){
     });
 
 }
-/*====================================
-RADMIN TUTORIAL POPUP
-====================================*/
+
+
 
 function openRadminModal(){
 
@@ -1086,9 +969,8 @@ function closeRadminModal(){
     .style.display="none";
 
 }
-/*====================================
-UPDATE LIST POPUP
-====================================*/
+
+
 
 function openUpdateModal(){
 
@@ -1106,9 +988,8 @@ function closeUpdateModal(){
     .style.display="none";
 
 }
-/*====================================
-UPDATE LIST POPUP
-====================================*/
+
+
 
 function openUpdateModal(){
 
@@ -1122,9 +1003,8 @@ function closeUpdateModal(){
     document.getElementById("updateModal").style.display="none";
 
 }
-/*====================================
-NPC EXCHANGE SLIDER POPUP
-====================================*/
+
+
 
 let npcIndex = 1;
 
@@ -1226,9 +1106,8 @@ function prevNPC(){
 
     showNPC();
 
-}/*==================================================
-            STREAMER MODAL
-==================================================*/
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -1240,7 +1119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Buka popup
+    
     streamerBtn.addEventListener("click", function (e) {
 
         e.preventDefault();
@@ -1251,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // Tombol Close
+    
     closeStreamer.addEventListener("click", function () {
 
         streamerModal.style.display = "none";
@@ -1260,7 +1139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // Klik area luar popup
+   
     streamerModal.addEventListener("click", function (e) {
 
         if (e.target === streamerModal) {
@@ -1273,7 +1152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // Tombol ESC
+   
     document.addEventListener("keydown", function (e) {
 
         if (e.key === "Escape") {
@@ -1349,7 +1228,7 @@ setInterval(updateGMClock,1000);
 
 
 /* ===========================
-   REALISTIC FAKE SERVER PING
+   REALISTIC SERVER PING
 =========================== */
 
 const pingText = document.getElementById("serverPing");
@@ -1360,11 +1239,11 @@ if (pingText) {
 
     function updatePing() {
 
-        // 10% kemungkinan ping naik tinggi
+        
         if (Math.random() < 0.10) {
 
             ping = Math.floor(Math.random() * 21) + 30;
-            // 30 - 50 ms
+          
 
         } else {
 
