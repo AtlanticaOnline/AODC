@@ -4,275 +4,351 @@
 <head>
 
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Atlantica Online Dream Cometrue</title>
+<title>Atlantica Online Dream Cometrue V3</title>
 
-<link rel="icon" href="images/logo.png">
+<meta name="description" content="Atlantica Online Dream Cometrue V3 Level Max 150">
 
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/images/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- VIDEO -->
+<!-- ===================================== -->
+<!-- WELCOME SCREEN -->
+<!-- ===================================== -->
 
-<video autoplay muted loop playsinline id="bgVideo">
+<div id="preloader">
+    
+    <img
+    src="assets/images/welcome-banner.jpg"
+    id="welcomeImage"
+    alt="Atlantica Banner">
 
-<source src="video/battle.mp4" type="video/mp4">
+    <div class="welcomeBanner">
+
+        <button id="enterWorld">
+    <div class="loading-fill"></div>
+    <span>ENTER THE WORLD</span>
+</button>
+
+        <div class="loadingArea">
+
+            <div id="loadingText">
+                Connecting to Server...
+            </div>
+
+            <div class="loadingBar">
+
+                <div class="loadingProgress"></div>
+
+            </div>
+
+            <div id="loadingPercent">
+                0%
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- VIDEO BACKGROUND -->
+<!-- ===================================== -->
+
+<video
+id="bgVideo"
+autoplay
+loop
+muted
+playsinline>
+
+<source
+src="assets/video/battle.mp4"
+type="video/mp4">
 
 </video>
 
-<div class="overlay"></div>
+<div class="videoOverlay"></div>
 
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-
-<source src="music/music.mp3">
-
-</audio>
-
-<div class="music-control">
-
-    <i class="fa-solid fa-volume-high"></i>
-
-    <input
-        type="range"
-        id="volumeSlider"
-        min="0"
-        max="100"
-        value="50">
-
-</div>
-
-<!-- CURSOR -->
-
-<div class="cursor"></div>
-
-<!-- NAVBAR -->
+<!-- ===================================== -->
+<!-- HEADER -->
+<!-- ===================================== -->
 
 <header>
 
-<div class="logo">
+<div class="container">
 
-<img src="images/logo.png">
+<div class="logoArea">
+
+<img
+src="assets/images/logo.png"
+class="logo">
 
 <div>
 
-<h2>AODC</h2>
+<h1>
 
-<p>ATLANTICA ONLINE DREAM COMETRUE</p>
+AODC
 
-</div>
+</h1>
 
-</div>
+<p>
 
-<nav>
+Atlantica Online Dream Cometrue
 
-<ul>
-
-<li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
-
-<li><a href="#download"><i class="fa-solid fa-download"></i> Download</a></li>
-
-<li><a href="#news"><i class="fa-solid fa-newspaper"></i> News</a></li>
-
-<li class="event">
-
-<a href="#">
-<i class="fa-solid fa-calendar-days"></i>
-Event
-<i class="fa-solid fa-chevron-down"></i>
-</a>
-
-<div class="event-box">
-
-<div class="swiper eventSwiper">
-
-<div class="swiper-wrapper">
-
-<div class="swiper-slide"><img src="images/event1.jpg"></div>
-
-<div class="swiper-slide"><img src="images/event2.jpg"></div>
-
-<div class="swiper-slide"><img src="images/event3.jpg"></div>
-
-<div class="swiper-slide"><img src="images/event4.jpg"></div>
-
-<div class="swiper-slide"><img src="images/event5.jpg"></div>
-
-<div class="swiper-slide"><img src="images/event6.jpg"></div>
-
-</div>
-
-<div class="swiper-button-prev"></div>
-
-<div class="swiper-button-next"></div>
-
-<div class="swiper-pagination"></div>
+</p>
 
 </div>
 
 </div>
 
-</li>
+<nav class="navbar">
 
-<li class="streamer-menu">
+<a href="#home">HOME</a>
 
-<a href="#">
+<a href="#download">DOWNLOAD</a>
 
-<i class="fa-solid fa-video"></i>
+<a href="#event">EVENT</a>
 
-Streamer
+<a href="#news">NEWS</a>
 
-<i class="fa-solid fa-chevron-down"></i>
+<a href="#ranking">RANKING</a>
 
-</a>
+<a href="#community">COMMUNITY</a>
 
-<ul class="streamer-dropdown">
+<div class="language-menu">
 
-<li>
+<button class="lang-btn">
+🌐 LANGUAGE ▼
+</button>
 
-<a href="javascript:void(0);" onclick="openYoutubeModal()">
+<div class="language-dropdown">
 
-<i class="fab fa-youtube"></i>
+<a href="#" onclick="doGTranslate('en|en');return false;">🇺🇸 English</a>
 
-YouTube
+<a href="#" onclick="doGTranslate('en|id');return false;">🇮🇩 Indonesia</a>
 
-</a>
+<a href="#" onclick="doGTranslate('en|ja');return false;">🇯🇵 日本語</a>
 
-</li>
+<a href="#" onclick="doGTranslate('en|ko');return false;">🇰🇷 한국어</a>
 
-<li>
+<a href="#" onclick="doGTranslate('en|zh-CN');return false;">🇨🇳 中文</a>
 
-<a href="javascript:void(0);" onclick="openTikTokModal()">
+<a href="#" onclick="doGTranslate('en|th');return false;">🇹🇭 ไทย</a>
 
-<i class="fab fa-tiktok"></i>
+<a href="#" onclick="doGTranslate('en|vi');return false;">🇻🇳 Tiếng Việt</a>
 
-TikTok
+</div>
 
-</a>
-
-</li>
-
-</ul>
-
-</li>
-
-<a href="https://discord.gg/8a2ZEqDYj" target="_blank">
-    <i class="fab fa-discord"></i> Discord
-</a>
-
-<li class="translate-menu">
-
-<i class="fab fa-google"></i>
-
-<div id="google_translate_element"></div>
-
-</li>
-
-</ul>
+</div>
 
 </nav>
 
+<div class="serverClock">
+
+<div class="clockTitle">
+
+SERVER TIME
+
+</div>
+
+<div id="clock">
+
+00:00:00
+
+</div>
+
+</div>
+
+</div>
+
 </header>
 
+<!-- ===================================== -->
 <!-- HERO -->
+<!-- ===================================== -->
 
-<section class="hero">
+<section
+id="home"
+class="hero">
 
-<h1 id="heroTitle">ATLANTICA ONLINE</h1>
+<div class="heroContent">
 
-<h2 class="wave-title">
+<span>
 
-<span>D</span>
-<span>R</span>
-<span>E</span>
-<span>A</span>
-<span>M</span>
+PRIVATE SERVER MMORPG
 
-<span>&nbsp;</span>
+</span>
 
-<span>C</span>
-<span>O</span>
-<span>M</span>
-<span>E</span>
-<span>T</span>
-<span>R</span>
-<span>U</span>
-<span>E</span>
+<h2>
+
+ATLANTICA ONLINE
 
 </h2>
 
-<div class="hero-text">
+<h3>
 
-<span>FREE TO PLAY</span>
+DREAM COMETRUE
 
-<span>NO DONATION</span>
+</h3>
 
-<span>NO PAY TO WIN</span>
+
+<p>
+
+
+
+</p>
 
 </div>
-</section>
-<!-- =========================
-NEWS
-========================= -->
 
-<section id="news" class="news">
+</section><!-- ===================================== -->
+<!-- SERVER PANEL -->
+<!-- ===================================== -->
+
+<section class="serverSection">
 
 <div class="container">
 
-<h2 class="section-title">
-Latest News
+<div class="serverGrid">
+
+<div class="serverCard">
+
+<i class="fa-solid fa-server"></i>
+
+<h3>SERVER STATUS</h3>
+
+<h2 class="online">
+
+ONLINE
+
 </h2>
 
-<div class="news-grid">
+<span>
 
-<div class="news-card">
+Stable Server
 
-<h3>Grand Opening</h3>
-
-<p>
-Welcome to Atlantica Online Dream Cometrue.
-Start your adventure now!
-</p>
+</span>
 
 </div>
 
-<div class="news-card">
 
-<h3>Server Stable</h3>
+<div class="serverCard">
 
-<p>
-24 Hours Online
-Low Latency
-High Performance
-</p>
+<div class="wifi-live">
+    <span class="wifi-dot"></span>
+
+    <svg class="wifi-svg" viewBox="0 0 64 64">
+
+        <path class="wave1"
+              d="M24 42 A12 12 0 0 1 40 42"
+              fill="none"/>
+
+        <path class="wave2"
+              d="M18 36 A18 18 0 0 1 46 36"
+              fill="none"/>
+
+        <path class="wave3"
+              d="M10 28 A26 26 0 0 1 54 28"
+              fill="none"/>
+
+    </svg>
 
 </div>
 
-<div class="news-card">
+<h3>PING</h3>
 
-<h3>Free To Play</h3>
+<h2 id="serverPing">
 
-<p>
-No Donation
-No Pay To Win
-Classic Gameplay
-</p>
+18 ms
+
+</h2>
+
+<span>
+
+Asia Server
+
+</span>
+
+</div>
+
+<div class="serverCard">
+
+<div class="gmClock">
+
+<svg id="gmClock" width="60" height="60" viewBox="0 0 100 100">
+
+<circle cx="50" cy="50" r="45"
+fill="#ffb300"/>
+
+<circle cx="50" cy="50" r="42"
+fill="none"
+stroke="#ffdf6a"
+stroke-width="2"/>
+
+<line id="hourHand"
+x1="50"
+y1="50"
+x2="50"
+y2="28"
+stroke="#222"
+stroke-width="5"
+stroke-linecap="round"/>
+
+<line id="minuteHand"
+x1="50"
+y1="50"
+x2="50"
+y2="18"
+stroke="#222"
+stroke-width="4"
+stroke-linecap="round"/>
+
+<line id="secondHand"
+x1="50"
+y1="52"
+x2="50"
+y2="15"
+stroke="#ff3b30"
+stroke-width="2"
+stroke-linecap="round"/>
+
+<circle cx="50" cy="50"
+r="4"
+fill="#222"/>
+
+</svg>
+
+</div>
+
+<h3>GM INVASION</h3>
+
+<h2 id="gmCountdown">
+
+20:00 WIB
+
+</h2>
+
+<span>
+
+Daily Event
+
+</span>
 
 </div>
 
@@ -282,51 +358,149 @@ Classic Gameplay
 
 </section>
 
-<!-- =========================
-DOWNLOAD
-========================= -->
+<!-- ===================================== -->
+<!-- ANNOUNCEMENT -->
+<!-- ===================================== -->
 
-<section id="download" class="download">
+<section class="announce">
 
-<div class="container">
+<div class="announceBox">
 
-<h2 class="section-title">
+<marquee scrollamount="6">
 
-Download Center
+🔥 Welcome To Atlantica Online Dream Cometrue V3 &nbsp;&nbsp;&nbsp;
+
+⚔ GM Invasion Every Day 20:00 WIB &nbsp;&nbsp;&nbsp;
+
+🎁 Weekly Champion Every Day &nbsp;&nbsp;&nbsp;
+
+⭐ Free To Play - No Top Up &nbsp;&nbsp;&nbsp;
+
+</marquee>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- DOWNLOAD CENTER -->
+<!-- ===================================== -->
+
+<section id="download" class="downloadSection">
+
+<div class="sectionTitle">
+
+<h2>
+
+DOWNLOAD CENTER
 
 </h2>
 
-<div class="download-box">
+<p>
 
-<a href="javascript:void(0);" class="download-card" onclick="openDownloadModal()">
+Everything you need to start playing.
+
+</p>
+
+</div>
+
+<div class="downloadGrid">
+
+<div class="downloadCard">
 
 <i class="fa-solid fa-download"></i>
 
-<h3>Full Client</h3>
+<h3>
 
-<p>Click Here To Download</p>
+GAME CLIENT
 
-</a>
+</h3>
 
-<a href="#" class="download-card">
+<p>
 
-<i class="fa-solid fa-wrench"></i>
+Download Full Client
 
-<h3>Manual Patch</h3>
+</p>
 
-<p>Latest Update</p>
+<button onclick="window.open('https://drive.google.com/file/d/1ovlGlxDlFKREidbwmu6Fux94x-xI2Cen/view','_blank')">
 
-<a href="https://www.radmin-vpn.com/" target="_blank" class="download-card">
+DOWNLOAD
+
+</button>
+
+</div>
+
+<div class="downloadCard">
 
 <i class="fa-solid fa-network-wired"></i>
 
-<h3>Radmin VPN</h3>
+<h3>
 
-<p>Download Official Version</p>
+RADMIN VPN
 
-</a>
+</h3>
 
-</a>
+<p>
+
+Virtual Network
+
+</p>
+
+<button onclick="window.open('https://www.radmin-vpn.com/','_blank')">
+
+DOWNLOAD
+
+</button>
+
+</div>
+
+<div class="downloadCard">
+
+<i class="fa-solid fa-link"></i>
+
+<h3>
+
+DIRECT LINK
+
+</h3>
+
+<p>
+
+Important server links and downloads.
+
+</p>
+
+
+<button onclick="window.open('LINK_ANDA','_blank')">
+
+OPEN LINK
+
+</button>
+
+
+</div>
+
+<div class="downloadCard">
+
+<i class="fa-brands fa-google-drive"></i>
+
+<h3>
+
+GOOGLE DRIVE
+
+</h3>
+
+<p>
+
+Mirror Download
+
+</p>
+
+<button onclick="window.open('https://drive.usercontent.google.com/download?id=1ovlGlxDlFKREidbwmu6Fux94x-xI2Cen&export=download&authuser=0','_blank')">
+
+DOWNLOAD
+
+</button>
 
 </div>
 
@@ -334,262 +508,879 @@ Download Center
 
 </section>
 
-<!-- =========================
-SERVER STATUS
-========================= -->
+<!-- ===================================== -->
+<!-- EVENT -->
+<!-- ===================================== -->
 
-<section class="status">
+<section id="event" class="eventSection">
 
-<div class="container">
+<div class="sectionTitle">
 
-<h2 class="section-title">
+<h2>
 
-Server Status
+SERVER EVENT
 
 </h2>
 
-<div class="status-grid">
+<p>
 
-<div class="status-card">
+Daily Activities
 
-<h3>Server</h3>
-
-<span class="online">ONLINE</span>
+</p>
 
 </div>
 
-<div class="status-card">
+<div class="eventGrid">
 
-<h3>Website</h3>
+    <!-- GM INVASION -->
+    <div class="eventCard">
 
-<span class="online">ONLINE</span>
+        <h3>⚔ GM INVASION</h3>
 
-</div>
+        <p>
+            Every Day<br>
+            20:00 WIB
+        </p>
 
-<div class="status-card">
+        <button onclick="openGMModal()">
+            VIEW DROP
+        </button>
 
-<h3>Launcher</h3>
+    </div>
 
-<span class="online">ONLINE</span>
+    <!-- WEEKLY CHAMPION -->
+    <div class="eventCard">
 
-</div>
+        <h3>🏆 WEEKLY CHAMPION</h3>
 
-</div>
+        <h4>This Week</h4>
+
+        <ul class="weeklyList">
+
+            <li>[Mr]ThomasShelby <span>15.07.26</span></li>
+            <li>MengKI88 <span>14.07.26</span></li>
+            <li>Castlevania <span>14.07.26</span></li>
+            <li>Seephilist <span>13.07.26</span></li>
+            <li>Castlevania <span>12.07.26</span></li>
+            <li>Dwarf <span>12.07.26</span></li>
+            <li>Decimo <span>11.07.26</span></li>
+            <li>Castlevania <span>11.07.26</span></li>
+            <li>Castlevania <span>10.07.26</span></li>
+            <li>Decimo <span>09.07.26</span></li>
+            <li>Castlevania <span>09.07.26</span></li>
+            <li>[Mr]ThomasSelby <span>09.07.26</span></li>
+            <li>[HY]PamanBAS <span>08.07.26</span></li>
+            <li>BestBrutal <span>07.07.26</span></li>
+            <li>[Mr]ThomasSelby <span>07.07.26</span></li>
+            <li>Xnachi <span>06.07.26</span></li>
+            <li>[Mr]ThomasSelby <span>06.07.26</span></li>
+            <li>[Mr]ThomasSelby <span>05.07.26</span></li>
+            <li>[CEO]WaLL <span>05.07.26</span></li>
+            <li>[Mr]ThomasSelby <span>04.07.26</span></li>
+            <li>[Jr]Kendrick <span>04.07.26</span></li>
+            <li>Synx <span>04.07.26</span></li>
+            <li>Synx <span>04.07.26</span></li>
+            <li>Synx <span>03.07.26</span></li>
+        
+
+        </ul>
+
+    </div>
+
+    <!-- WEEKEND GOONZU -->
+    <div class="eventCard">
+
+        <h3>⭐ WEEKEND GOONZU MAP</h3>
+
+        <p>
+            DROP RARE ITEM ⭐⭐⭐
+        </p>
+            Friday-Sunday ⭐⭐⭐
+        </p>    
+
+    </div>
 
 </div>
 
 </section>
 
-<!-- =========================
-EVENT TODAY
-========================= -->
+<!-- ===================================== -->
+<!-- GM DROP -->
+<!-- ===================================== -->
 
-<section class="eventToday">
+<div id="gmModal" class="modal">
 
-<div class="container">
+<div class="modalBox">
 
-<h2 class="section-title">
+<span class="close" onclick="closeGMModal()">
+    &times;
+</span>
 
-Every Day Event
+<h2>
+
+GM INVASION DROP LIST
 
 </h2>
 
-<ul>
+<div class="dropGrid">
 
-<li>✔ GM Gift Time</li>
+<ul class="dropList">
 
-<li>✔ GM Invasion - 21:00</li>
+<li>Atlas Ore</li>
 
-<li>✔ Weekly Champion</li>
+<li>Atlantis Silver Coin</li>
 
-<li>✔ Rare Item Drop </li>
+<li>Atlantis Gold Coin</li>
+
+<li>Atlantis Platinum Coin</li>
+
+<li>Pegasus Equipment Box</li>
+
+<li>Oriharukon Shard</li>
+
+<li>Enchant Stone VI</li>
+
+<li>Enhance Stone VI</li>
 
 </ul>
 
 </div>
 
+</div> <!-- modalBox -->
+</div> <!-- gmModal -->
+
+<!-- ===================================== -->
+<!-- NEWS -->
+<!-- ===================================== -->
+
+<section id="news" class="newsSection">
+
+<div class="sectionTitle">
+
+<h2>LATEST NEWS</h2>
+
+<p>Atlantica Online Dream Cometrue V3</p>
+
+</div>
+
+
+<div class="newsGrid">
+
+
+<div class="newsCard">
+
+<div class="newsImage">
+<img src="assets/images/news1.jpg">
+</div>
+
+
+<div class="newsContent">
+
+<h3>🖥 Tutorial Radmin + Login</h3>
+
+<p>
+Panduan masuk server dan setting Radmin VPN.
+</p>
+
+<button onclick="openRadminModal()">
+VIEW TUTORIAL
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="newsCard">
+
+<div class="newsImage">
+<img src="assets/images/news2.jpg">
+</div>
+
+
+<div class="newsContent">
+
+<h3>📜 List Update</h3>
+
+<p>
+Latest server update information.
+</p>
+
+<button onclick="openUpdateModal()">
+VIEW UPDATE
+</button>
+
+</div>
+
+
+</div>
+
+<div class="newsCard">
+
+<div class="newsImage">
+<img src="assets/images/news3.jpg">
+
+</div>
+
+
+<div class="newsContent">
+
+<h3>🎁 NPC Exchange</h3>
+
+<p>
+GM will appear every night at 20:00 WIB with exclusive rewards.
+</p>
+
+<button onclick="openNPCModal()">
+VIEW NPC
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
 </section>
 
-<!-- =========================
-FOOTER
-========================= -->
+<!-- ===================================== -->
+<!-- RANKING -->
+<!-- ===================================== -->
+
+<section id="ranking" class="rankingSection">
+
+<div class="sectionTitle">
+
+<h2>TOP RANKING</h2>
+
+<p>Hall Of Fame</p>
+
+</div>
+
+<div class="rankingGrid">
+
+<div class="rankingCard">
+
+<h3>
+🏆 Top Player
+</h3>
+
+<ol>
+
+<li>[GM]AODC </li>
+
+<li>[GM]EVENT </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+</ol>
+
+</div>
+
+<div class="rankingCard">
+
+<h3>
+🛡 Top Guild
+</h3>
+
+<ol>
+
+<li>AODC </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+<li> </li>
+
+</ol>
+
+</div>
+
+<div class="rankingCard">
+
+<h3>
+⚔ Top Mercenary
+</h3>
+
+<ol>
+
+<li>Spartan</li>
+
+<li>Druid</li>
+
+<li>Odysseus</li>
+
+<li>Guan Yu</li>
+
+<li>Gigas</li>
+
+</ol>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- COMMUNITY -->
+<!-- ===================================== -->
+
+<section id="community" class="communitySection">
+
+<div class="sectionTitle">
+
+<h2>COMMUNITY</h2>
+
+<p>Stay Connected</p>
+
+</div>
+
+<div class="communityGrid">
+
+<a href="https://discord.gg/SA5QGVhzT"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="communityCard">
+
+    <i class="fa-brands fa-discord"></i>
+
+    <h3>Discord</h3>
+
+    <p>Join Our Community</p>
+
+</a>
+
+<a href="#" class="communityCard">
+
+<i class="fab fa-youtube"></i>
+
+<h3>YouTube</h3>
+
+<p>Latest Videos</p>
+
+</a>
+
+<a href="javascript:void(0);" class="communityCard" id="streamerBtn">
+
+    <i class="fab fa-tiktok"></i>
+
+    <h3>TikTok</h3>
+
+    <p>Short Clips</p>
+
+</a>
+
+<a href="#" class="communityCard">
+
+<i class="fab fa-facebook"></i>
+
+<h3>Facebook</h3>
+
+<p>Official Page</p>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- FOOTER -->
+<!-- ===================================== -->
 
 <footer>
 
+<div class="footerTop">
+
+<img
+src="assets/images/logo.png"
+class="footerLogo">
+
+<h2>
+
+ATLANTICA ONLINE
+
+</h2>
+
 <p>
 
-© 2026 Atlantica Online Dream Cometrue / Private Server V3
+Dream Cometrue V3
 
 </p>
 
+</div>
+
+<div class="footerMenu">
+
+<a href="#home">
+
+HOME
+
+</a>
+
+<a href="#download">
+
+DOWNLOAD
+
+</a>
+
+<a href="#event">
+
+EVENT
+
+</a>
+
+<a href="#news">
+
+NEWS
+
+</a>
+
+<a href="#ranking">
+
+RANKING
+
+</a>
+
+</div>
+
+<div class="footerSocial">
+
+<a href="#">
+
+<i class="fab fa-discord"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fab fa-tiktok"></i>
+
+</a>
+
+</div>
+
+<div class="copyright">
+
+Copyright © 2026
+
+Atlantica Online Dream Cometrue V3
+
+All Rights Reserved.
+
+</div>
+
 </footer>
 
-<!-- SCRIPT -->
+<!-- ===================================== -->
+<!-- MUSIC -->
+<!-- ===================================== -->
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<audio
+id="bgMusic"
+loop>
 
-<!-- DOWNLOAD POPUP -->
+<source
+src="assets/music/music.mp3"
+type="audio/mpeg">
 
-<div id="downloadModal" class="downloadModal">
+</audio>
 
-<div class="downloadContent">
+<!-- ===================================== -->
+<!-- PARTICLE -->
+<!-- ===================================== -->
 
-<span class="closeModal" onclick="closeDownloadModal()">&times;</span>
+<div id="particles"></div>
 
-<h2>Client Download</h2>
 
-<p>Select Download Mirror</p>
+<!-- WARNING SOUND -->
 
-<a href="https://drive.google.com/uc?export=download&id=1ovlGlxDlFKREidbwmu6Fux94x-xI2Cen"
-   target="_blank"
-   class="downloadLink">
+<audio id="warningSound" preload="auto">
+    <source src="assets/audio/warning.mp3" type="audio/mpeg">
+</audio>
 
-📥 Google Drive Mirror 1
 
-</a>
+<!-- RIGHT CLICK WARNING -->
 
-<a href="https://drive.google.com/yyyyy" target="_blank" class="downloadLink">
-📥 Google Drive Mirror 2
-</a>
+<div id="rightClickWarning" class="warningPopup">
 
-<a href="https://www.mediafire.com/xxxxx" target="_blank" class="downloadLink">
-📥 MediaFire
-</a>
+    <div class="warningBox">
 
-<a href="https://mega.nz/xxxxx" target="_blank" class="downloadLink">
-📥 Mega.nz
-</a>
-
+        <div class="middleFinger">
+    🖕
 </div>
 
-</div>
+        <h2>⚠ WARNING ⚠</h2>
 
-<!-- =========================
-TIKTOK POPUP
-========================= -->
+        <p>
+            HAYO...<br>
+            MAU NGAPAIN KLIK KANAN?
+        </p>
 
-<div id="tiktokModal" class="downloadModal">
-
-    <div class="downloadContent">
-
-        <span class="closeModal" onclick="closeTikTokModal()">&times;</span>
-
-        <h2>🎵 TikTok Streamers</h2>
-
-        <p>Select Your Favorite Streamer</p>
-
-        <a href="https://www.tiktok.com/@aodcpresent"
-           target="_blank"
-           class="downloadLink">
-
-            🎥 AODC Present
-
-        </a>
-        <a href="https://www.tiktok.com/@xnachi12"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 xNachi12
-
-</a>
-<a href="https://www.tiktok.com/@bgpohan"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 Bgpohan
-
-</a>
-<a href="https://www.tiktok.com/@qrisl2"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 Chemeia
-
-</a>
-<a href="https://www.tiktok.com/@heptakonos"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 Нёртакойоs
-
-</a>
-
-<a href="https://www.tiktok.com/@dzaira.esports"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 dzaira.esports
-
-</a>
-<a href="https://www.tiktok.com/@tubagusofficial11"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 TechTalksWithTubagus
-
-</a>
-<a href="https://www.tiktok.com/@m.ruwil"
-   target="_blank"
-   class="downloadLink">
-
-    🎥 m.ruwil
-
-</a>
+        <button type="button" id="closeWarningBtn">
+            OK
+        </button>
 
     </div>
 
 </div>
 
-<!-- =========================
-YOUTUBE POPUP
-========================= -->
+<!-- UPDATE LIST POPUP -->
 
-<div id="youtubeModal" class="downloadModal">
+<div id="updateModal" class="modal">
 
-    <div class="downloadContent">
+<div class="modalBox">
 
-        <span class="closeModal" onclick="closeYoutubeModal()">&times;</span>
+<span class="close" onclick="closeUpdateModal()">
+&times;
+</span>
 
-        <h2>📺 YouTube Channels</h2>
 
-        <p>Select Your Favorite Channel</p>
+<h2>
+SERVER UPDATE LIST
+</h2>
 
-        <a href="https://www.youtube.com/live/uzTjN_7I9mQ"
-           target="_blank"
-           class="downloadLink">
 
-            ▶ AODC Live Stream
+<ul class="updateList">
 
-        </a>
+<li>🎁 add New Item NPC Andrew 14.07.26</li>
 
-    </div>
+<li>🎁 Revamp Medici Deluxe 13.07.26</li>
+
+<li>🎁 Revamp Reward TBS/Dugeon 13.07.26</li>
+
+<li>🎁 NPC Exchange Added</li>
+
+<li>🔥 Revamp Goonzu Map</li>
+
+<li>💎 New Rare Drop Item Added</li>
+
+<li>🛠 Client Bug Fixed</li>
+
+<li>⚔ Server Balance Improvement</li>
+
+</ul>
+
 
 </div>
+
+</div>
+
+<!-- NPC EXCHANGE POPUP -->
+
+<div id="npcModal" class="modal">
+
+<div class="modalBox">
+
+
+<span class="close" onclick="closeNPCModal()">
+&times;
+</span>
+
+
+<h2>
+NPC EXCHANGE
+</h2>
+
+
+<img 
+id="npcImage"
+src="assets/images/npc/npc1.jpg"
+class="tutorialImage">
+
+
+<div class="npcButton">
+
+
+<button onclick="prevNPC()">
+◀ PREV
+</button>
+
+
+<button onclick="nextNPC()">
+NEXT ▶
+</button>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- RADMIN TUTORIAL POPUP -->
+
+<div id="radminModal" class="modal">
+
+<div class="modalBox">
+
+<span class="close" onclick="closeRadminModal()">
+&times;
+</span>
+
+<h2>
+TUTORIAL RADMIN + LOGIN
+</h2>
+
+
+<img 
+src="assets/images/radmin1.jpg"
+class="tutorialImage">
+
+
+<p>
+1. Install Radmin VPN<br>
+2. Join Network Server<br>
+3. Buka Launcher<br>
+4. Login Account
+</p>
+
+
+</div>
+
+</div>
+
 
 <script src="script.js"></script>
 
+<!-- =========================
+     GOOGLE TRANSLATE
+========================= -->
+
+<div id="google_translate_element" style="display:none;"></div>
+
 <script>
-
-function googleTranslateElementInit(){
-
-new google.translate.TranslateElement({
-
-pageLanguage:'en',
-
-includedLanguages:'en,id,ko,zh-CN,zh-TW',
-
-layout:google.translate.TranslateElement.InlineLayout.SIMPLE
-
-},
-
-'google_translate_element');
-
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        {
+            pageLanguage: 'en',
+            includedLanguages: 'id,en,ja,ko,zh-CN,th,vi',
+            autoDisplay: false
+        },
+        'google_translate_element'
+    );
 }
 
+function doGTranslate(langPair) {
+
+    var lang = langPair.split('|')[1];
+
+    var combo = document.querySelector('.goog-te-combo');
+
+    if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+    } else {
+        setTimeout(function () {
+            combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = lang;
+                combo.dispatchEvent(new Event('change'));
+            }
+        }, 1000);
+    }
+
+}
 </script>
+
+<!-- ==========================================
+     STREAMER MODAL
+========================================== -->
+
+<div id="streamerModal" class="streamer-modal">
+
+    <div class="streamer-box">
+
+        <div class="streamer-header">
+
+            <h2>🎥 STREAMER AODC</h2>
+
+            <p>Official AODC Content Creators</p>
+
+        </div>
+
+        <div class="streamer-list">
+
+    <div class="streamer-list">
+
+    <div class="streamer-card">
+
+        <div class="streamer-info">
+            <h3><i class="fa-solid fa-circle-user"></i> HKGAMING</h3>
+            <p>Official Streamer</p>
+        </div>
+
+        <a href="https://www.tiktok.com/@hk_gaming2026"
+           target="_blank"
+           class="watch-btn">
+            ▶ WATCH
+        </a>
+
+    </div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Xnachi</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@xnachi12"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Pohan</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@bgpohan"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Ruwill</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@m.ruwil"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Chemeia</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@qrisl2"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Нёртакойоs</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@heptakonos"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> TechTalksWithTubagus</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@tubagusofficial11"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> dzaira.esports</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@dzaira.esports"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+<div class="streamer-card">
+
+    <div class="streamer-info">
+        <h3><i class="fas fa-user-circle"></i> Ibnuutari829</h3>
+        <p>Official Streamer</p>
+    </div>
+
+    <a href="https://www.tiktok.com/@syahira8299"
+       target="_blank"
+       class="watch-btn">
+        ▶ WATCH
+    </a>
+
+</div>
+
+</div> <!-- streamer-list -->
+        </div>
+
+        <button
+            id="closeStreamer"
+            class="close-streamer">
+
+            ✖ CLOSE
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- END STREAMER MODAL -->
+
+<script src="script.js"></script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>
