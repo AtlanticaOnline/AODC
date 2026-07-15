@@ -1,103 +1,424 @@
-/*=========================================
-AODC Dream Cometrue V3
+/*==========================================================
+AODC V5 ULTIMATE
 script.js
-=========================================*/
+PART 1
+==========================================================*/
 
-// =============================
-// EVENT GALLERY
-// =============================
+"use strict";
 
-const eventSwiper = new Swiper(".eventSwiper", {
+/*==============================
+DOM ELEMENT
+==============================*/
 
-    loop: true,
+const enterBtn = document.getElementById("enterWorld");
+const loadingArea = document.querySelector(".loadingArea");
+const loadingBar = document.querySelector(".loadingProgress");
+const loadingPercent = document.getElementById("loadingPercent");
+const loadingText = document.getElementById("loadingText");
+const gmCountdown = document.getElementById("gmCountdown");
 
-    speed: 800,
+enterBtn.addEventListener("click", function () {
 
-    grabCursor: true,
+    enterBtn.style.display = "none";
+    loadingArea.style.display = "block";
 
-    centeredSlides: true,
+    let progress = 0;
 
-    slidesPerView: 1,
+    const timer = setInterval(function () {
 
-    autoplay: {
+        progress += 2;
 
-        delay: 3000,
+        loadingBar.style.width = progress + "%";
+        loadingPercent.innerText = progress + "%";
+        loadingText.innerText = "CONNECTING TO ATLANTICA...";
 
-        disableOnInteraction: false,
+        if (progress >= 100) {
 
-        pauseOnMouseEnter: false
+            clearInterval(timer);
 
-    },
+            document.getElementById("welcomeScreen").style.opacity = "0";
 
-    pagination: {
+            setTimeout(function () {
 
-        el: ".swiper-pagination",
+                document.getElementById("welcomeScreen").style.display = "none";
 
-        clickable: true
+            }, 400);
 
-    },
+        }
 
-    navigation: {
+    }, 30);
 
-        nextEl: ".swiper-button-next",
+});
 
-        prevEl: ".swiper-button-prev"
+/*==============================
+START WEBSITE
+==============================*/
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    initClock();
+
+    initPlayer();
+
+    initPing();
+
+    initCountdown();
+
+});
+
+/*==============================
+WELCOME SCREEN
+==============================*/
+
+if(enterWorld){
+
+enterWorld.addEventListener("click",startLoading);
+
+}
+
+function startLoading(){
+
+    enterWorld.style.display="none";
+
+    loadingArea.style.display="block";
+
+    if(bgMusic){
+
+        bgMusic.volume=.35;
+
+        bgMusic.play().catch(()=>{});
+
+    }
+
+    let progress=0;
+
+    const timer=setInterval(()=>{
+
+        progress++;
+
+        loadingBar.style.width=progress+"%";
+
+        loadingPercent.innerHTML=progress+"%";
+
+        if(progress<=20){
+
+            loadingText.innerHTML="Connecting Server...";
+
+        }
+
+        else if(progress<=40){
+
+            loadingText.innerHTML="Loading Resources...";
+
+        }
+
+        else if(progress<=60){
+
+            loadingText.innerHTML="Loading Character...";
+
+        }
+
+        else if(progress<=80){
+
+            loadingText.innerHTML="Preparing World...";
+
+        }
+
+        else{
+
+            loadingText.innerHTML="Entering Atlantica...";
+
+        }
+
+        if(progress>=100){
+
+            clearInterval(timer);
+
+            document.getElementById("preloader").classList.add("fadeOut");
+
+            openWebsite();
+
+
+        }
+
+    },16);
+
+}
+
+function openWebsite(){
+
+    preloader.style.transition=".8s";
+
+    preloader.style.opacity="0";
+
+    preloader.style.pointerEvents="none";
+
+    setTimeout(()=>{
+
+        preloader.style.display="none";
+
+    },900);
+
+}
+
+/*==============================
+REAL TIME CLOCK
+==============================*/
+
+function initClock(){
+
+if(!clock) return;
+
+updateClock();
+
+setInterval(updateClock,1000);
+
+}
+
+function updateClock(){
+
+const now=new Date();
+
+const h=String(now.getHours()).padStart(2,"0");
+
+const m=String(now.getMinutes()).padStart(2,"0");
+
+const s=String(now.getSeconds()).padStart(2,"0");
+
+clock.innerHTML=`${h}:${m}:${s}`;
+
+}
+
+/*==============================
+ONLINE PLAYER
+==============================*/
+
+function initPlayer(){
+
+if(!onlinePlayer) return;
+
+let player=462;
+
+onlinePlayer.innerHTML=player;
+
+setInterval(()=>{
+
+player+=Math.floor(Math.random()*7)-3;
+
+if(player<430){
+
+player=430;
+
+}
+
+if(player>650){
+
+player=650;
+
+}
+
+onlinePlayer.innerHTML=player;
+
+},4000);
+
+}
+
+/*==============================
+SERVER PING
+==============================*/
+
+function initPing(){
+
+if(!serverPing) return;
+
+updatePing();
+
+setInterval(updatePing,2500);
+
+}
+
+function updatePing(){
+
+const ping=Math.floor(Math.random()*15)+18;
+
+serverPing.innerHTML=ping+" ms";
+
+}
+
+/*==============================
+GM COUNTDOWN
+==============================*/
+
+function initCountdown(){
+
+if(!gmCountdown) return;
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+}
+
+function updateCountdown(){
+
+const now=new Date();
+
+const target=new Date();
+
+target.setHours(20,0,0,0);
+
+if(now>target){
+
+target.setDate(target.getDate()+1);
+
+}
+
+const diff=target-now;
+
+const h=Math.floor(diff/1000/60/60);
+
+const m=Math.floor((diff/1000/60)%60);
+
+const s=Math.floor((diff/1000)%60);
+
+gmCountdown.innerHTML=`${h}h ${m}m ${s}s`;
+
+}
+
+/*==============================
+END PART 1
+==============================*/
+
+/*==========================================================
+AODC V5 ULTIMATE
+script.js
+PART 2
+==========================================================*/
+
+"use strict";
+
+/*==============================
+GM POPUP
+==============================*/
+
+const gmButton = document.getElementById("gmButton");
+const gmClose = document.getElementById("gmClose");
+
+if(gmButton && gmModal){
+
+    gmButton.addEventListener("click",()=>{
+
+        gmModal.classList.add("active");
+
+    });
+
+}
+
+if(gmClose){
+
+    gmClose.addEventListener("click",()=>{
+
+        gmModal.classList.remove("active");
+
+    });
+
+}
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===gmModal){
+
+        gmModal.classList.remove("active");
 
     }
 
 });
 
-// =============================
-// MUSIC PLAYER
-// =============================
 
-const bgMusic = document.getElementById("bgMusic");
+/*==============================
+DOWNLOAD POPUP
+==============================*/
 
-let musicStarted = false;
+const downloadButton=document.getElementById("downloadButton");
+const downloadClose=document.getElementById("downloadClose");
 
-document.addEventListener("click", function () {
+if(downloadButton && downloadModal){
 
-    if (!musicStarted) {
+    downloadButton.addEventListener("click",()=>{
 
-        bgMusic.volume = 0.4;
+        downloadModal.classList.add("active");
 
-        bgMusic.play();
+    });
 
-        musicStarted = true;
+}
+
+if(downloadClose){
+
+    downloadClose.addEventListener("click",()=>{
+
+        downloadModal.classList.remove("active");
+
+    });
+
+}
+
+
+/*==============================
+HEADER EFFECT
+==============================*/
+
+const header=document.querySelector("header");
+
+let lastScroll=0;
+
+window.addEventListener("scroll",()=>{
+
+    const current=window.pageYOffset;
+
+    if(current>120){
+
+        header.classList.add("sticky");
+
+    }else{
+
+        header.classList.remove("sticky");
 
     }
 
-});
+    if(current>lastScroll && current>150){
 
-// =============================
-// CURSOR
-// =============================
+        header.style.transform="translateY(-100%)";
 
-const cursor = document.querySelector(".cursor");
+    }else{
 
-document.addEventListener("mousemove", e => {
+        header.style.transform="translateY(0)";
 
-    cursor.style.left = e.clientX + "px";
+    }
 
-    cursor.style.top = e.clientY + "px";
+    lastScroll=current;
 
 });
 
-// =============================
-// HERO ANIMATION
-// =============================
 
-const reveal = document.querySelectorAll(".fade-up");
+/*==============================
+SCROLL REVEAL
+==============================*/
+
+const revealItems=document.querySelectorAll(
+
+".serverCard,.downloadCard,.eventCard,.rankingCard,.newsCard,.communityCard"
+
+);
 
 function revealAnimation(){
 
-    reveal.forEach(el=>{
+    revealItems.forEach(item=>{
 
-        const top = el.getBoundingClientRect().top;
+        const top=item.getBoundingClientRect().top;
 
-        if(top < window.innerHeight-100){
+        if(top<window.innerHeight-120){
 
-            el.classList.add("show");
+            item.classList.add("show");
 
         }
 
@@ -109,95 +430,857 @@ window.addEventListener("scroll",revealAnimation);
 
 revealAnimation();
 
-// =============================
-// NAVBAR EFFECT
-// =============================
+
+/*==============================
+DOWNLOAD CARD
+==============================*/
+
+document.querySelectorAll(".downloadCard").forEach(card=>{
+
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.transform="translateY(-10px)";
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="translateY(0px)";
+
+    });
+
+});
+
+
+/*==============================
+EVENT CARD
+==============================*/
+
+document.querySelectorAll(".eventCard").forEach(card=>{
+
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.boxShadow="0 0 35px gold";
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.boxShadow="";
+
+    });
+
+});
+
+
+/*==============================
+NEWS CARD
+==============================*/
+
+document.querySelectorAll(".newsCard").forEach(card=>{
+
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.transform="translateY(-8px)";
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="translateY(0px)";
+
+    });
+
+});
+
+
+/*==============================
+BACK TO TOP
+==============================*/
+
+const topButton=document.createElement("button");
+
+topButton.className="topButton";
+
+topButton.innerHTML="▲";
+
+document.body.appendChild(topButton);
 
 window.addEventListener("scroll",()=>{
 
-const header=document.querySelector("header");
+    if(window.scrollY>500){
 
-if(window.scrollY>50){
+        topButton.classList.add("show");
 
-header.style.background="rgba(0,0,0,.75)";
+    }else{
 
-}else{
+        topButton.classList.remove("show");
 
-header.style.background="rgba(0,0,0,.35)";
+    }
+
+});
+
+topButton.addEventListener("click",()=>{
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+
+
+/*==============================
+MUSIC CONTROL
+==============================*/
+
+const musicButton=document.createElement("button");
+
+musicButton.className="musicButton";
+
+musicButton.innerHTML="🎵";
+
+document.body.appendChild(musicButton);
+
+let musicOn=true;
+
+musicButton.addEventListener("click",()=>{
+
+    if(!bgMusic) return;
+
+    if(musicOn){
+
+        bgMusic.pause();
+
+        musicButton.innerHTML="🔇";
+
+    }else{
+
+        bgMusic.play();
+
+        musicButton.innerHTML="🎵";
+
+    }
+
+    musicOn=!musicOn;
+
+});
+
+
+/*==============================
+VIDEO CONTROL
+==============================*/
+
+const videoButton=document.createElement("button");
+
+videoButton.className="videoButton";
+
+videoButton.innerHTML="🎥";
+
+document.body.appendChild(videoButton);
+
+let videoMute=true;
+
+videoButton.addEventListener("click",()=>{
+
+    if(!bgVideo) return;
+
+    videoMute=!videoMute;
+
+    bgVideo.muted=videoMute;
+
+    videoButton.innerHTML=videoMute ? "🎥" : "🔊";
+
+});
+
+
+/*==============================
+SERVER NOTIFICATION
+==============================*/
+
+function toast(message){
+
+    const notify=document.createElement("div");
+
+    notify.className="toast";
+
+    notify.innerHTML=message;
+
+    document.body.appendChild(notify);
+
+    setTimeout(()=>{
+
+        notify.classList.add("show");
+
+    },50);
+
+    setTimeout(()=>{
+
+        notify.classList.remove("show");
+
+    },3500);
+
+    setTimeout(()=>{
+
+        notify.remove();
+
+    },4200);
+
+}
+
+setTimeout(()=>{
+
+    toast("🟢 Connected to Atlantica Server");
+
+},2500);
+
+setTimeout(()=>{
+
+    toast("🎁 GM Invasion Every Day 20:00 WIB");
+
+},6500);
+
+setTimeout(()=>{
+
+    toast("👥 Welcome to AODC V5");
+
+},10000);
+
+
+/*==============================
+END PART 2
+==============================*/
+
+/*==========================================================
+AODC V5 ULTIMATE
+script.js
+PART 3 FINAL
+==========================================================*/
+
+"use strict";
+
+/*==============================
+CURSOR GLOW
+==============================*/
+
+const cursor=document.createElement("div");
+
+cursor.className="cursorGlow";
+
+document.body.appendChild(cursor);
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+
+cursor.style.top=e.clientY+"px";
+
+});
+
+
+/*==============================
+FIRE PARTICLE
+==============================*/
+
+function createParticle(){
+
+const p=document.createElement("div");
+
+p.className="fireParticle";
+
+p.style.left=Math.random()*window.innerWidth+"px";
+
+p.style.animationDuration=(Math.random()*3+4)+"s";
+
+document.body.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},7000);
+
+}
+
+setInterval(createParticle,250);
+
+
+/*==============================
+ENTER EFFECT
+==============================*/
+
+function enterExplosion(){
+
+for(let i=0;i<60;i++){
+
+const star=document.createElement("div");
+
+star.className="enterParticle";
+
+star.style.left="50%";
+
+star.style.top="50%";
+
+star.style.setProperty("--x",(Math.random()*700-350)+"px");
+
+star.style.setProperty("--y",(Math.random()*700-350)+"px");
+
+document.body.appendChild(star);
+
+setTimeout(()=>{
+
+star.remove();
+
+},1800);
+
+}
+
+}
+
+if(enterWorld){
+
+enterWorld.addEventListener("click",enterExplosion);
+
+}
+
+
+/*==============================
+ANNOUNCEMENT
+==============================*/
+
+const announce=document.getElementById("announcement");
+
+if(announce){
+
+const news=[
+
+"🔥 Welcome To Atlantica Online Dream Cometrue",
+
+"⚔ GM Invasion Every Day 20:00 WIB",
+
+"👑 Level Max 150",
+
+"💎 Free To Play",
+
+"🎁 Weekly Champion",
+
+"⭐ Enjoy Your Adventure"
+
+];
+
+let index=0;
+
+announce.innerHTML=news[0];
+
+setInterval(()=>{
+
+index++;
+
+if(index>=news.length){
+
+index=0;
+
+}
+
+announce.innerHTML=news[index];
+
+},5000);
+
+}
+
+
+/*==============================
+LEGENDARY ITEM
+==============================*/
+
+document.querySelectorAll(".dropItem").forEach(item=>{
+
+item.addEventListener("mouseenter",()=>{
+
+item.style.transform="scale(1.08)";
+
+item.style.boxShadow="0 0 35px gold";
+
+});
+
+item.addEventListener("mouseleave",()=>{
+
+item.style.transform="scale(1)";
+
+item.style.boxShadow="";
+
+});
+
+});
+
+
+/*==============================
+IMAGE PROTECTION
+==============================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.draggable=false;
+
+});
+
+
+/*==============================
+KEYBOARD
+==============================*/
+
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+if(gmModal){
+
+gmModal.classList.remove("active");
+
+}
+
+if(downloadModal){
+
+downloadModal.classList.remove("active");
+
+}
 
 }
 
 });
-/*=========================================
-AODC Dream Cometrue V3
-SCRIPT PART 2
-=========================================*/
 
-// ==========================
-// MUSIC BUTTON
-// ==========================
 
-const musicBtn = document.getElementById("musicBtn");
+/*====================================
+RIGHT CLICK WARNING SYSTEM
+====================================*/
 
-if (musicBtn) {
+document.addEventListener("contextmenu", function(e){
 
-    musicBtn.addEventListener("click", () => {
+    e.preventDefault();
 
-        if (bgMusic.paused) {
+    const popup = document.getElementById("rightClickWarning");
+    const sound = document.getElementById("warningSound");
 
-            bgMusic.play();
+    if(popup){
 
-            musicBtn.innerHTML =
-                '<i class="fa-solid fa-volume-high"></i>';
+        popup.classList.add("show");
 
-        } else {
+    }
 
-            bgMusic.pause();
+    if(sound){
 
-            musicBtn.innerHTML =
-                '<i class="fa-solid fa-volume-xmark"></i>';
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play().catch(()=>{});
 
+    }
+
+});
+
+
+function closeWarning(){
+
+    const popup = document.getElementById("rightClickWarning");
+    const sound = document.getElementById("warningSound");
+
+
+    if(popup){
+
+        popup.classList.remove("show");
+
+    }
+
+
+    if(sound){
+
+        sound.pause();
+        sound.currentTime = 0;
+
+    }
+
+}
+
+/*==============================
+COPY
+==============================*/
+
+document.addEventListener("copy",(e)=>{
+
+e.preventDefault();
+
+});
+
+
+/*==============================
+PRELOAD IMAGE
+==============================*/
+
+const preload=[
+
+"assets/images/logo.png",
+
+"assets/images/welcome-banner.jpg",
+
+"assets/images/atlas.png",
+
+"assets/images/agc.png",
+
+"assets/images/apc.png"
+
+];
+
+preload.forEach(src=>{
+
+const img=new Image();
+
+img.src=src;
+
+});
+
+
+/*==============================
+PRELOAD VIDEO
+==============================*/
+
+if(bgVideo){
+
+bgVideo.load();
+
+}
+
+
+/*==============================
+WINDOW LOAD
+==============================*/
+
+window.addEventListener("load",()=>{
+
+console.clear();
+
+console.log("%cAODC V5 ULTIMATE","font-size:22px;color:gold;font-weight:bold;");
+
+console.log("Website Loaded Successfully");
+
+toast("🚀 Website Ready");
+
+});
+
+
+/*==============================
+SAFE CHECK
+==============================*/
+
+window.addEventListener("error",(e)=>{
+
+console.warn("AODC Error :",e.message);
+
+});
+
+
+/*==============================
+VERSION
+==============================*/
+
+const VERSION="AODC V5 ULTIMATE FINAL";
+
+console.log(VERSION);
+
+
+/*==============================
+THE END
+==============================*/
+
+function openGMModal() {
+
+    const modal = document.getElementById("gmModal");
+
+    if (modal) {
+        modal.classList.add("active");
+    }
+
+}
+
+function closeGMModal() {
+
+    const modal = document.getElementById("gmModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+
+}
+/*====================================
+RIGHT CLICK WARNING
+====================================*/
+
+const warningPopup = document.getElementById("rightClickWarning");
+const warningSound = document.getElementById("warningSound");
+
+document.addEventListener("contextmenu", function(e){
+
+    e.preventDefault();
+
+    warningPopup.classList.add("show");
+
+    warningSound.pause();
+    warningSound.currentTime = 0;
+
+    warningSound.play();
+
+});
+
+function closeWarning(){
+
+    warningPopup.classList.remove("show");
+
+    warningSound.pause();
+
+    warningSound.currentTime = 0;
+
+}
+/*====================================
+CLOSE RIGHT CLICK WARNING
+====================================*/
+
+const closeWarningBtn = document.getElementById("closeWarningBtn");
+
+if(closeWarningBtn){
+
+    closeWarningBtn.addEventListener("click", function(){
+
+        const popup = document.getElementById("rightClickWarning");
+        const sound = document.getElementById("warningSound");
+
+        if(popup){
+            popup.classList.remove("show");
+        }
+
+        if(sound){
+            sound.pause();
+            sound.currentTime = 0;
         }
 
     });
 
 }
+/*====================================
+RADMIN TUTORIAL POPUP
+====================================*/
 
-// ==========================
-// VOLUME
-// ==========================
+function openRadminModal(){
 
-const volumeSlider = document.getElementById("volumeSlider");
-
-if (volumeSlider) {
-
-    volumeSlider.addEventListener("input", function () {
-
-        bgMusic.volume = this.value;
-
-    });
+    document
+    .getElementById("radminModal")
+    .style.display="flex";
 
 }
 
-// ==========================
-// SMOOTH SCROLL
-// ==========================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+function closeRadminModal(){
 
-    anchor.addEventListener("click", function (e) {
+    document
+    .getElementById("radminModal")
+    .style.display="none";
+
+}
+/*====================================
+UPDATE LIST POPUP
+====================================*/
+
+function openUpdateModal(){
+
+    document
+    .getElementById("updateModal")
+    .style.display="flex";
+
+}
+
+
+function closeUpdateModal(){
+
+    document
+    .getElementById("updateModal")
+    .style.display="none";
+
+}
+/*====================================
+UPDATE LIST POPUP
+====================================*/
+
+function openUpdateModal(){
+
+    document.getElementById("updateModal").style.display="flex";
+
+}
+
+
+function closeUpdateModal(){
+
+    document.getElementById("updateModal").style.display="none";
+
+}
+/*====================================
+NPC EXCHANGE SLIDER POPUP
+====================================*/
+
+let npcIndex = 1;
+
+
+const npcImages = [
+
+    "assets/images/npc/npc1.jpg",
+
+    "assets/images/npc/npc2.jpg",
+
+    "assets/images/npc/npc3.jpg"
+
+];
+
+
+
+function openNPCModal(){
+
+    document
+    .getElementById("npcModal")
+    .style.display="flex";
+
+
+    npcIndex = 0;
+
+    showNPC();
+
+}
+
+
+
+
+function closeNPCModal(){
+
+    document
+    .getElementById("npcModal")
+    .style.display="none";
+
+}
+
+
+
+function showNPC(){
+
+    const img = document.getElementById("npcImage");
+
+
+    if(img){
+
+        img.style.animation="none";
+
+        setTimeout(()=>{
+
+            img.style.animation="npcFade .4s ease";
+
+        },10);
+
+
+        img.src = npcImages[npcIndex];
+
+    }
+
+}
+
+
+
+
+function nextNPC(){
+
+    npcIndex++;
+
+
+    if(npcIndex >= npcImages.length){
+
+        npcIndex = 0;
+
+    }
+
+
+    showNPC();
+
+}
+
+
+
+
+
+function prevNPC(){
+
+    npcIndex--;
+
+
+    if(npcIndex < 0){
+
+        npcIndex = npcImages.length - 1;
+
+    }
+
+
+    showNPC();
+
+}/*==================================================
+            STREAMER MODAL
+==================================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const streamerBtn = document.getElementById("streamerBtn");
+    const streamerModal = document.getElementById("streamerModal");
+    const closeStreamer = document.getElementById("closeStreamer");
+
+    if (!streamerBtn || !streamerModal || !closeStreamer) {
+        return;
+    }
+
+    // Buka popup
+    streamerBtn.addEventListener("click", function (e) {
 
         e.preventDefault();
 
-        const target = document.querySelector(this.getAttribute("href"));
+        streamerModal.style.display = "flex";
 
-        if (target) {
+        document.body.style.overflow = "hidden";
 
-            target.scrollIntoView({
+    });
 
-                behavior: "smooth"
+    // Tombol Close
+    closeStreamer.addEventListener("click", function () {
 
-            });
+        streamerModal.style.display = "none";
+
+        document.body.style.overflow = "";
+
+    });
+
+    // Klik area luar popup
+    streamerModal.addEventListener("click", function (e) {
+
+        if (e.target === streamerModal) {
+
+            streamerModal.style.display = "none";
+
+            document.body.style.overflow = "";
+
+        }
+
+    });
+
+    // Tombol ESC
+    document.addEventListener("keydown", function (e) {
+
+        if (e.key === "Escape") {
+
+            streamerModal.style.display = "none";
+
+            document.body.style.overflow = "";
 
         }
 
@@ -205,162 +1288,99 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 });
 
-// ==========================
-// BUTTON HOVER EFFECT
-// ==========================
+document.addEventListener("DOMContentLoaded", ()=> {
 
-document.querySelectorAll(".heroBtn a").forEach(btn => {
+    initCountdown();
+    
+    if(enterWorld){
+        enterWorld.addEventListener("click", startLoading);
+    }
 
-    btn.addEventListener("mouseenter", () => {
-
-        btn.style.transform = "scale(1.08)";
-
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Enter"){
+            startLoading();
+        }
     });
-
-    btn.addEventListener("mouseleave", () => {
-
-        btn.style.transform = "scale(1)";
-
-    });
-
 });
 
-// ==========================
-// PARALLAX VIDEO
-// ==========================
+/*==========================
+LIVE SVG CLOCK
+==========================*/
 
-window.addEventListener("scroll", () => {
+function updateGMClock(){
 
-    const video = document.getElementById("bgVideo");
+const now=new Date();
 
-    if (video) {
+const h=now.getHours()%12;
 
-        video.style.transform =
-            `translateY(${window.scrollY * 0.25}px)`;
+const m=now.getMinutes();
+
+const s=now.getSeconds();
+
+const hourDeg=(h*30)+(m*0.5);
+
+const minuteDeg=(m*6)+(s*0.1);
+
+const secondDeg=s*6;
+
+document.getElementById("hourHand")
+.setAttribute(
+"transform",
+`rotate(${hourDeg} 50 50)`
+);
+
+document.getElementById("minuteHand")
+.setAttribute(
+"transform",
+`rotate(${minuteDeg} 50 50)`
+);
+
+document.getElementById("secondHand")
+.setAttribute(
+"transform",
+`rotate(${secondDeg} 50 50)`
+);
+
+}
+
+updateGMClock();
+
+setInterval(updateGMClock,1000);
+
+
+/* ===========================
+   REALISTIC FAKE SERVER PING
+=========================== */
+
+const pingText = document.getElementById("serverPing");
+
+if (pingText) {
+
+    let ping = 18;
+
+    function updatePing() {
+
+        // 10% kemungkinan ping naik tinggi
+        if (Math.random() < 0.10) {
+
+            ping = Math.floor(Math.random() * 21) + 30;
+            // 30 - 50 ms
+
+        } else {
+
+            ping += Math.floor(Math.random() * 3) - 1;
+
+            if (ping < 16) ping = 16;
+            if (ping > 22) ping = 22;
+
+        }
+
+        pingText.textContent = ping + " ms";
 
     }
 
-});
+    updatePing();
 
-// ==========================
-// LOADING
-// ==========================
-
-window.addEventListener("load", () => {
-
-    document.body.classList.add("loaded");
-
-});
-function openDownloadModal(){
-
-document.getElementById("downloadModal").style.display="block";
+    setInterval(updatePing, 1500);
 
 }
-
-function closeDownloadModal(){
-
-document.getElementById("downloadModal").style.display="none";
-
-}
-
-window.onclick=function(e){
-
-let modal=document.getElementById("downloadModal");
-
-if(e.target==modal){
-
-modal.style.display="none";
-
-}
-
-}
-const music=document.getElementById("bgMusic");
-const volume=document.getElementById("volumeSlider");
-
-music.volume=0.5;
-
-volume.addEventListener("input",function(){
-
-    music.volume=this.value/100;
-
-});
-const heroTitle = document.getElementById("heroTitle");
-
-document.addEventListener("mousemove", (e) => {
-
-    const rect = heroTitle.getBoundingClientRect();
-
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
-
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < 250) {
-
-        heroTitle.style.transform =
-            `translate(${dx * 0.03}px, ${dy * 0.03}px)`;
-
-    } else {
-
-        heroTitle.style.transform = "translate(0,0)";
-
-    }
-
-});
-//==============================
-// TikTok Popup
-//==============================
-
-function openTikTokModal(){
-
-    document.getElementById("tiktokModal").style.display="block";
-
-}
-
-function closeTikTokModal(){
-
-    document.getElementById("tiktokModal").style.display="none";
-
-}
-
-window.addEventListener("click",function(e){
-
-    const modal=document.getElementById("tiktokModal");
-
-    if(e.target===modal){
-
-        modal.style.display="none";
-
-    }
-
-});
-//==============================
-// YouTube Popup
-//==============================
-
-function openYoutubeModal(){
-
-    document.getElementById("youtubeModal").style.display="block";
-
-}
-
-function closeYoutubeModal(){
-
-    document.getElementById("youtubeModal").style.display="none";
-
-}
-
-window.addEventListener("click",function(e){
-
-    const modal=document.getElementById("youtubeModal");
-
-    if(e.target===modal){
-
-        modal.style.display="none";
-
-    }
-
-});
